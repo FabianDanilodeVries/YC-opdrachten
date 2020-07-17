@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,93 +8,125 @@
         table {
             width: 450px;
             height: 400px;
-            text-align: center;
         }
-
-        .vakje {
+        .square {
             border: 2px solid black;
         }
-
-        .vakje:hover {
-            background-color: #f6ecdc;
-        }
-
     </style>
     <script>
+        let rowCounter = [0, 1, 1, 1, 1, 1, 1, 1]
+        let turn = true;
+        function fillSquare(column) {
+            if (rowCounter[column] == 7) {
+                alert("That column is full");
+            } else if (turn) {
+                document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'green';
+                rowCounter[column]++;
+                turn = false;
+            } else if (!turn) {
+                document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'red';
+                rowCounter[column]++;
+                turn = true;
+            } 
 
+            let greenCounter = 0;
+            let redCounter = 0;
+
+        }
+        function onMouseOver(column) {
+            if (turn) {
+                document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'rgba(100, 255, 87, 0.3)';
+
+            } else {
+                document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'rgba(255, 23, 0, 0.3)';
+            }
+            document.getElementById("R" + (rowCounter[column] + 1) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
+            document.getElementById("R" + (rowCounter[column] + 2) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
+            document.getElementById("R" + (rowCounter[column] + 3) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
+            document.getElementById("R" + (rowCounter[column] + 4) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
+            document.getElementById("R" + (rowCounter[column] + 5) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
+        }
+        function onMouseLeave(column) {
+            document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'white';
+            document.getElementById("R" + (rowCounter[column] + 1) + "C" + column).style.backgroundColor = 'white';
+            document.getElementById("R" + (rowCounter[column] + 2) + "C" + column).style.backgroundColor = 'white';
+            document.getElementById("R" + (rowCounter[column] + 3) + "C" + column).style.backgroundColor = 'white';
+            document.getElementById("R" + (rowCounter[column] + 4) + "C" + column).style.backgroundColor = 'white';
+            document.getElementById("R" + (rowCounter[column] + 5) + "C" + column).style.backgroundColor = 'white';
+        }
     </script>
 </head>
 <body>
     <table>
         <tr>
-            <th>A</th>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
+            <th>R6</th>
+            <td id="R6C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
+            <td id="R6C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
+            <td id="R6C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
+            <td id="R6C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
+            <td id="R6C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
+            <td id="R6C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
+            <td id="R6C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
         </tr>
         <tr>
-            <th>B</th>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
+            <th>R5</th>
+            <td id="R5C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
+            <td id="R5C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
+            <td id="R5C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
+            <td id="R5C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
+            <td id="R5C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
+            <td id="R5C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
+            <td id="R5C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
         </tr>
         <tr>
-            <th>C</th>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
+            <th>R4</th>
+            <td id="R4C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
+            <td id="R4C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
+            <td id="R4C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
+            <td id="R4C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
+            <td id="R4C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
+            <td id="R4C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
+            <td id="R4C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
         </tr>
         <tr>
-            <th>D</th>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
+            <th>R3</th>
+            <td id="R3C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
+            <td id="R3C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
+            <td id="R3C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
+            <td id="R3C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
+            <td id="R3C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
+            <td id="R3C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
+            <td id="R3C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
         </tr>
         <tr>
-            <th>E</th>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
+            <th>R2</th>
+            <td id="R2C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
+            <td id="R2C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
+            <td id="R2C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
+            <td id="R2C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
+            <td id="R2C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
+            <td id="R2C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
+            <td id="R2C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
         </tr>
         <tr>
-            <th>F</th>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
-            <td class="vakje"></td>
+            <th>R1</th>
+            <td id="R1C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
+            <td id="R1C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
+            <td id="R1C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
+            <td id="R1C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
+            <td id="R1C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
+            <td id="R1C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
+            <td id="R1C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
         </tr>
         <tr>
             <td></td>
-            <td><b>1</b></td>
-            <td><b>2</b></td>
-            <td><b>3</b></td>
-            <td><b>4</b></td>
-            <td><b>5</b></td>
-            <td><b>6</b></td>
-            <td><b>7</b></td>
+            <td><b>C1</b></td>
+            <td><b>C2</b></td>
+            <td><b>C3</b></td>
+            <td><b>C4</b></td>
+            <td><b>C5</b></td>
+            <td><b>C6</b></td>
+            <td><b>C7</b></td>
         </tr>
     </table>
 </body>
