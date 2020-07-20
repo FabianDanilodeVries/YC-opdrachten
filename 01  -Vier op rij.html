@@ -34,55 +34,53 @@
         }
 
         function winCondition(column) {
-            let greenCounter = 0;
-            let redCounter = 0;
+            let greenHorizontalCounter = 0;
+            let greenVerticalCounter = 0;
+            let redHorizontalCounter = 0;
+            let redVerticalCounter = 0;
             if (color == 1) {
-                greenCounter = 0;
                 for (i = 1; i < 7; i++) {
                     if (document.getElementById("R" + (rowCounter[column] - 1) + "C" + i).style.backgroundColor == 'green') {
-                        greenCounter++;
-                        if (greenCounter == 4) {
+                        greenHorizontalCounter++;
+                        if (greenHorizontalCounter == 4) {
                             alert("Four in a row: green, horizontally");
                         }
                     } else {
-                        greenCounter = 0;
+                        greenHorizontalCounter = 0;
                     }
                 }
             } else if (color == 2) {
-                redCounter = 0;
                 for (i = 1; i < 7; i++) {
                     if (document.getElementById("R" + (rowCounter[column] - 1) + "C" + i).style.backgroundColor == 'red') {
-                        redCounter++;
-                        if (redCounter == 4) {
+                        redHorizontalCounter++;
+                        if (redHorizontalCounter == 4) {
                             alert("Four in a row: red, horizontally");
                         }
                     } else {
-                        redCounter = 0;
+                        redHorizontalCounter = 0;
                     }
                 }
             }
             if (color == 1) {
-                greenCounter = 0;
                 for (i = 1; i < 6; i++) {
                     if (document.getElementById("R" + i + "C" + column).style.backgroundColor == 'green') {
-                        greenCounter++;
-                        if (greenCounter == 4) {
+                        greenVerticalCounter++;
+                        if (greenVerticalCounter == 4) {
                             alert("Four in a row: green, vertically");
                         }
                     } else {
-                        greenCounter = 0;
+                        greenVerticalCounter = 0;
                     }
                 }
             } else if (color == 2) {
-                redCounter = 0;
                 for (i = 1; i < 6; i++) {
                     if (document.getElementById("R" + i + "C" + column).style.backgroundColor == 'red') {
-                        redCounter++;
-                        if (redCounter == 4) {
+                        redVerticalCounter++;
+                        if (redVerticalCounter == 4) {
                             alert("Four in a row: red, vertically");
                         }
                     } else {
-                        redCounter = 0;
+                        redVerticalCounter = 0;
                     }
                 }
             }
