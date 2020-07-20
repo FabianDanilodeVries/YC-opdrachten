@@ -16,6 +16,7 @@
     <script>
         let rowCounter = [0, 1, 1, 1, 1, 1, 1, 1]
         let turn = true;
+        let color = 0;
         function fillSquare(column) {
             if (rowCounter[column] == 7) {
                 alert("That column is full");
@@ -23,15 +24,64 @@
                 document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'green';
                 rowCounter[column]++;
                 turn = false;
+                color = 1;
             } else if (!turn) {
                 document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'red';
                 rowCounter[column]++;
                 turn = true;
-            } 
+                color = 2;
+            }
+        }
 
+        function winCondition(column) {
             let greenCounter = 0;
             let redCounter = 0;
-
+            if (color == 1) {
+                for (i = 1; i < 7; i++) {
+                    if (document.getElementById("R" + (rowCounter[column] - 1) + "C" + i).style.backgroundColor === 'green') {
+                        greenCounter++;
+                        if (greenCounter == 4) {
+                            alert("Four in a row: green, horizontally");
+                        }
+                    } else {
+                        greenCounter = 0;
+                    }
+                }
+            } else if (color == 2) {
+                for (i = 1; i < 7; i++) {
+                    if (document.getElementById("R" + (rowCounter[column] - 1) + "C" + i).style.backgroundColor === 'red') {
+                        redCounter++;
+                        if (redCounter == 4) {
+                            alert("Four in a row: red, horizontally");
+                        }
+                    } else {
+                        redCounter = 0;
+                    }
+                }
+            }
+            if (color == 1) {
+                for (i = 1; i < 6; i++) {
+                    if (document.getElementById("R" + i + "C" + column).style.backgroundColor === 'green') {
+                        greenCounter++;
+                        if (greenCounter == 4) {
+                            alert("Four in a row: green, vertically");
+                        }
+                    } else {
+                        greenCounter = 0;
+                    }
+                }
+            } else if (color == 2) {
+                for (i = 1; i < 6; i++) {
+                    if (document.getElementById("R" + i + "C" + column).style.backgroundColor === 'red') {
+                        redCounter++;
+                        if (redCounter == 4) {
+                            alert("Four in a row: red, vertically");
+                        }
+                    } else {
+                        redCounter = 0;
+                    }
+                }
+            }
         }
         function onMouseOver(column) {
             if (turn) {
@@ -57,66 +107,66 @@
     </script>
 </head>
 <body>
-    <table>
+    <table id="connectFourTable">
         <tr>
             <th>R6</th>
-            <td id="R6C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
-            <td id="R6C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
-            <td id="R6C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
-            <td id="R6C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
-            <td id="R6C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
-            <td id="R6C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
-            <td id="R6C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
+            <td id="R6C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
+            <td id="R6C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
+            <td id="R6C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
+            <td id="R6C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4), winCondition(4)"></td>
+            <td id="R6C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5), winCondition(5)"></td>
+            <td id="R6C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6), winCondition(6)"></td>
+            <td id="R6C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
             <th>R5</th>
-            <td id="R5C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
-            <td id="R5C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
-            <td id="R5C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
-            <td id="R5C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
-            <td id="R5C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
-            <td id="R5C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
-            <td id="R5C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
+            <td id="R5C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
+            <td id="R5C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
+            <td id="R5C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
+            <td id="R5C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4), winCondition(4)"></td>
+            <td id="R5C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5), winCondition(5)"></td>
+            <td id="R5C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6), winCondition(6)"></td>
+            <td id="R5C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
             <th>R4</th>
-            <td id="R4C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
-            <td id="R4C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
-            <td id="R4C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
-            <td id="R4C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
-            <td id="R4C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
-            <td id="R4C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
-            <td id="R4C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
+            <td id="R4C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
+            <td id="R4C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
+            <td id="R4C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
+            <td id="R4C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4), winCondition(4)"></td>
+            <td id="R4C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5), winCondition(5)"></td>
+            <td id="R4C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6), winCondition(6)"></td>
+            <td id="R4C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
             <th>R3</th>
-            <td id="R3C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
-            <td id="R3C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
-            <td id="R3C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
-            <td id="R3C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
-            <td id="R3C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
-            <td id="R3C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
-            <td id="R3C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
+            <td id="R3C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
+            <td id="R3C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
+            <td id="R3C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
+            <td id="R3C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4), winCondition(4)"></td>
+            <td id="R3C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5), winCondition(5)"></td>
+            <td id="R3C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6), winCondition(6)"></td>
+            <td id="R3C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
             <th>R2</th>
-            <td id="R2C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
-            <td id="R2C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
-            <td id="R2C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
-            <td id="R2C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
-            <td id="R2C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
-            <td id="R2C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
-            <td id="R2C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
+            <td id="R2C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
+            <td id="R2C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
+            <td id="R2C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
+            <td id="R2C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4), winCondition(4)"></td>
+            <td id="R2C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5), winCondition(5)"></td>
+            <td id="R2C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6), winCondition(6)"></td>
+            <td id="R2C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
             <th>R1</th>
-            <td id="R1C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1)"></td>
-            <td id="R1C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2)"></td>
-            <td id="R1C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3)"></td>
-            <td id="R1C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4)"></td>
-            <td id="R1C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5)"></td>
-            <td id="R1C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6)"></td>
-            <td id="R1C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7)"></td>
+            <td id="R1C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
+            <td id="R1C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
+            <td id="R1C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
+            <td id="R1C4" class="square" onmouseover="onMouseOver(4)" onmouseleave="onMouseLeave(4)" onclick="fillSquare(4), winCondition(4)"></td>
+            <td id="R1C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5), winCondition(5)"></td>
+            <td id="R1C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6), winCondition(6)"></td>
+            <td id="R1C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
             <td></td>
