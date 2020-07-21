@@ -6,11 +6,18 @@
     <title>Document</title>
     <style>
         table {
-            width: 450px;
-            height: 400px;
+            width: 550px;
+            height: 500px;
+            text-align: center;
+            background-color: lightblue;
+            padding: 20px 20px 50px 20px;
+            border: 2px solid black;
+            border-radius: 50px;
         }
         .square {
             border: 2px solid black;
+            border-radius: 40px;
+            background-color: white;
         }
     </style>
     <script>
@@ -86,23 +93,27 @@
             }
         }
         function onMouseOver(column) {
-            if (turn) {
-                document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'rgba(100, 255, 87, 0.3)';
+            if (rowCounter[column] < 7) {
+                if (turn) {
+                    document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'rgb(168, 255, 168)';
 
-            } else {
-                document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'rgba(255, 23, 0, 0.3)';
-            }
-            for (i = 1; i < 6; i++) {
-                if (document.getElementById("R" + i + "C" + column).style.backgroundColor != 'green' && document.getElementById("R" + i + "C" + column).style.backgroundColor != 'red') {
-                    document.getElementById("R" + (i + 1) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
+                } else {
+                    document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'rgb(255, 173, 173)';
+                }
+                for (i = 1; i < 6; i++) {
+                    if (document.getElementById("R" + i + "C" + column).style.backgroundColor != 'green' && document.getElementById("R" + i + "C" + column).style.backgroundColor != 'red') {
+                        document.getElementById("R" + (i + 1) + "C" + column).style.backgroundColor = 'rgb(255, 255, 209)';
+                    }
                 }
             }
         }
         function onMouseLeave(column) {
-            document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'white';
-            for (i = 1; i < 6; i++) {
-                if (document.getElementById("R" + i + "C" + column).style.backgroundColor != 'green' && document.getElementById("R" + i + "C" + column).style.backgroundColor != 'red') {
-                    document.getElementById("R" + (i + 1) + "C" + column).style.backgroundColor = 'white';
+            if (rowCounter[column] < 7) {
+                document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'white';
+                for (i = 1; i < 6; i++) {
+                    if (document.getElementById("R" + i + "C" + column).style.backgroundColor != 'green' && document.getElementById("R" + i + "C" + column).style.backgroundColor != 'red') {
+                        document.getElementById("R" + (i + 1) + "C" + column).style.backgroundColor = 'white';
+                    }
                 }
             }
         }
@@ -111,7 +122,6 @@
 <body>
     <table id="connectFourTable">
         <tr>
-            <th>R6</th>
             <td id="R6C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
             <td id="R6C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
             <td id="R6C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
@@ -121,7 +131,6 @@
             <td id="R6C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
-            <th>R5</th>
             <td id="R5C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
             <td id="R5C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
             <td id="R5C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
@@ -131,7 +140,6 @@
             <td id="R5C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
-            <th>R4</th>
             <td id="R4C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
             <td id="R4C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
             <td id="R4C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
@@ -141,7 +149,6 @@
             <td id="R4C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
-            <th>R3</th>
             <td id="R3C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
             <td id="R3C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
             <td id="R3C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
@@ -151,7 +158,6 @@
             <td id="R3C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
-            <th>R2</th>
             <td id="R2C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
             <td id="R2C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
             <td id="R2C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
@@ -161,7 +167,6 @@
             <td id="R2C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
         </tr>
         <tr>
-            <th>R1</th>
             <td id="R1C1" class="square" onmouseover="onMouseOver(1)" onmouseleave="onMouseLeave(1)" onclick="fillSquare(1), winCondition(1)"></td>
             <td id="R1C2" class="square" onmouseover="onMouseOver(2)" onmouseleave="onMouseLeave(2)" onclick="fillSquare(2), winCondition(2)"></td>
             <td id="R1C3" class="square" onmouseover="onMouseOver(3)" onmouseleave="onMouseLeave(3)" onclick="fillSquare(3), winCondition(3)"></td>
@@ -169,16 +174,6 @@
             <td id="R1C5" class="square" onmouseover="onMouseOver(5)" onmouseleave="onMouseLeave(5)" onclick="fillSquare(5), winCondition(5)"></td>
             <td id="R1C6" class="square" onmouseover="onMouseOver(6)" onmouseleave="onMouseLeave(6)" onclick="fillSquare(6), winCondition(6)"></td>
             <td id="R1C7" class="square" onmouseover="onMouseOver(7)" onmouseleave="onMouseLeave(7)" onclick="fillSquare(7), winCondition(7)"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><b>C1</b></td>
-            <td><b>C2</b></td>
-            <td><b>C3</b></td>
-            <td><b>C4</b></td>
-            <td><b>C5</b></td>
-            <td><b>C6</b></td>
-            <td><b>C7</b></td>
         </tr>
     </table>
 </body>
