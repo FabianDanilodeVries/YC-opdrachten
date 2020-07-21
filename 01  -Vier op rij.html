@@ -39,7 +39,7 @@
             let redHorizontalCounter = 0;
             let redVerticalCounter = 0;
             if (color == 1) {
-                for (i = 1; i < 7; i++) {
+                for (i = 1; i < 8; i++) {
                     if (document.getElementById("R" + (rowCounter[column] - 1) + "C" + i).style.backgroundColor == 'green') {
                         greenHorizontalCounter++;
                         if (greenHorizontalCounter == 4) {
@@ -50,7 +50,7 @@
                     }
                 }
             } else if (color == 2) {
-                for (i = 1; i < 7; i++) {
+                for (i = 1; i < 8; i++) {
                     if (document.getElementById("R" + (rowCounter[column] - 1) + "C" + i).style.backgroundColor == 'red') {
                         redHorizontalCounter++;
                         if (redHorizontalCounter == 4) {
@@ -62,7 +62,7 @@
                 }
             }
             if (color == 1) {
-                for (i = 1; i < 6; i++) {
+                for (i = 1; i < 7; i++) {
                     if (document.getElementById("R" + i + "C" + column).style.backgroundColor == 'green') {
                         greenVerticalCounter++;
                         if (greenVerticalCounter == 4) {
@@ -73,7 +73,7 @@
                     }
                 }
             } else if (color == 2) {
-                for (i = 1; i < 6; i++) {
+                for (i = 1; i < 7; i++) {
                     if (document.getElementById("R" + i + "C" + column).style.backgroundColor == 'red') {
                         redVerticalCounter++;
                         if (redVerticalCounter == 4) {
@@ -92,19 +92,19 @@
             } else {
                 document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'rgba(255, 23, 0, 0.3)';
             }
-            document.getElementById("R" + (rowCounter[column] + 1) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
-            document.getElementById("R" + (rowCounter[column] + 2) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
-            document.getElementById("R" + (rowCounter[column] + 3) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
-            document.getElementById("R" + (rowCounter[column] + 4) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
-            document.getElementById("R" + (rowCounter[column] + 5) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
+            for (i = 1; i < 6; i++) {
+                if (document.getElementById("R" + i + "C" + column).style.backgroundColor != 'green' && document.getElementById("R" + i + "C" + column).style.backgroundColor != 'red') {
+                    document.getElementById("R" + (i + 1) + "C" + column).style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
+                }
+            }
         }
         function onMouseLeave(column) {
             document.getElementById("R" + rowCounter[column] + "C" + column).style.backgroundColor = 'white';
-            document.getElementById("R" + (rowCounter[column] + 1) + "C" + column).style.backgroundColor = 'white';
-            document.getElementById("R" + (rowCounter[column] + 2) + "C" + column).style.backgroundColor = 'white';
-            document.getElementById("R" + (rowCounter[column] + 3) + "C" + column).style.backgroundColor = 'white';
-            document.getElementById("R" + (rowCounter[column] + 4) + "C" + column).style.backgroundColor = 'white';
-            document.getElementById("R" + (rowCounter[column] + 5) + "C" + column).style.backgroundColor = 'white';
+            for (i = 1; i < 6; i++) {
+                if (document.getElementById("R" + i + "C" + column).style.backgroundColor != 'green' && document.getElementById("R" + i + "C" + column).style.backgroundColor != 'red') {
+                    document.getElementById("R" + (i + 1) + "C" + column).style.backgroundColor = 'white';
+                }
+            }
         }
     </script>
 </head>
